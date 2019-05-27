@@ -111,8 +111,9 @@
                                 <a href="#" class=" delete-modal btn btn-danger btn-round" title="{{trans('admin.delete')}}" data-id="{{$data->id}}" >
                                    <span class="glyphicon glyphicon-trash"></span>
                                 </a>
+                                
 
-                                <a href="{{route('userdeals',$data->id)}}" class=" profile-modal btn btn-warning btn-round" title="{{trans('admin.deals')}}" data-data="{{$data}}" >
+                                <a href="{{route('userdeals',$data->id)}}" class=" profile-modal btn btn-warning btn-round" title="{{trans('admin.dealss')}}" data-data="{{$data}}" >
                                    <span class="glyphicon glyphicon-exclamation-sign"></span>
                                 </a>
 
@@ -1025,7 +1026,7 @@
                    var y = JSON.stringify(data);
                    title =  "{{trans('admin.edit')}}" ;
                    title2 = "{{trans('admin.delete')}}"   ;
-                   title3 = "{{trans('admin.deals')}}" ;
+                   title3 = "{{trans('admin.dealss')}}" ;
                    title4 = "{{trans('admin.charges')}}" ;
                    
                    if (data.status == 'active'){
@@ -1176,7 +1177,7 @@
                         $('#editModal').modal('hide');
                         title =  "{{trans('admin.edit')}}" ;
                         title2 = "{{trans('admin.delete')}}"  ;
-                        title3 = "{{trans('admin.deals')}}"   ;
+                        title3 = "{{trans('admin.dealss')}}"   ;
                         title4 = "{{trans('admin.charges')}}" ;
 
                         if (data.status == 'active'){

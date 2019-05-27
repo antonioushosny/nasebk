@@ -170,7 +170,6 @@
                                         <span class="glyphicon glyphicon-globe"></span>  <span class="hidden-xs">{{trans('admin.notification')}}</span> <span class="badge" id="count">{{count(auth()->user()->unreadnotifications)}}</span> <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" id="showNofication" >
-            
                                 @foreach(auth()->user()->notifications as $note)
                                     <li>
                                         <a href=" {{ route('home') }}" class="{{ $note->read_at == null ? 'unread' : '' }}">
@@ -179,7 +178,6 @@
                                     </li>
                                 
                                 @endforeach
-                                    
                                 </ul>
                             </li>
         
@@ -299,13 +297,13 @@
 
 @if($lang == 'ar')
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="  crossorigin="anonynasebks"></script>       
-    <script src="{{ asset('rtl/dist/js/app.js') }}"></script> 
     <script src="{{ asset('rtl/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('rtl/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('rtl/plugins/iCheck/icheck.min.js') }}"></script> 
     <script src="{{ asset('rtl/plugins/fastclick/fastclick.min.js') }}"></script>
     <script src="{{ asset('ltr/dist/js/adminlte.min.js') }}"></script>
     <script src="{{ asset('rtl/dist/js/demo.js') }}"></script> 
+    <script src="{{ asset('rtl/dist/js/app.js') }}"></script> 
 @else
     <script src="{{ asset('ltr/bower_components/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('ltr/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
