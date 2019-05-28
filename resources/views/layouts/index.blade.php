@@ -217,7 +217,7 @@
                         <li onnasebkseover=" animationHover(this , 'pulse');"><a href="{{ route('subcategories') }}" <?php echo ($page == 'subcategories') ? "class='current'" : ""; ?> ><i class="fa fa-layer-group   fa-2x  iconsidebarltr "></i> <span> {{trans('admin.subcategoriesm')}}</span></a></li> 
 
                         <li class="treeview"  onmouseover=" animationHover(this , 'pulse');">
-                            <a href="#"  <?php echo ($page == 'nowdeals') ? "class='current'" : ""; ?> <?php echo ($page == 'deals') ? "class='current'" : ""; ?> <?php echo ($page == 'last_deals') ? "class='current'" : ""; ?>  > <i class="fa fa-plus-square  fa-2x  iconsidebarltr"></i> <span> {{trans('admin.dealss')}}</span> <span class="caret" style=" margin-right: 12rem;"></span></a>
+                            <a href="#"  <?php echo ($page == 'nowdeals') ? "class='current'" : ""; ?> <?php echo ($page == 'deals') ? "class='current'" : ""; ?> <?php echo ($page == 'last_deals') ? "class='current'" : ""; ?>  > <i class="fa fa-plus-square  fa-2x  iconsidebarltr"></i> <span> {{trans('admin.dealss')}}</span> <span class="caret" ></span></a>
                              <ul class="treeview-menu">
                                 <li onnasebkseover=" animationHover(this , 'pulse');"><a href="{{ route('deals') }}" <?php echo ($page == 'deals') ? "class='current'" : ""; ?> ><i class="fa fa-plus-square   fa-2x  iconsidebarltr "></i> <span> {{trans('admin.dealsm')}}</span></a></li>
                         
@@ -234,7 +234,7 @@
                         <li onnasebkseover=" animationHover(this , 'pulse');"><a href="{{ route('packages') }}" <?php echo ($page == 'packages') ? "class='current'" : ""; ?> ><i class="fa fa-box   fa-2x  iconsidebarltr "></i> <span> {{trans('admin.packagesm')}}</span></a></li> 
          
                         <li class="treeview"  onmouseover=" animationHover(this , 'pulse');">
-                           <a href="#"  <?php echo ($page == 'users_new') ? "class='current'" : ""; ?> <?php echo ($page == 'users_solved') ? "class='current'" : ""; ?> <?php echo ($page == 'users_not_resolved') ? "class='current'" : ""; ?>  ><i class="fa fa-phone-square   fa-2x  iconsidebarltr"></i> <span> {{trans('admin.contacts_users')}}</span> <span class="caret" style=" margin-right: 7rem;"></span> </a>
+                           <a href="#"  <?php echo ($page == 'users_new') ? "class='current'" : ""; ?> <?php echo ($page == 'users_solved') ? "class='current'" : ""; ?> <?php echo ($page == 'users_not_resolved') ? "class='current'" : ""; ?>  ><i class="fa fa-phone-square   fa-2x  iconsidebarltr"></i> <span> {{trans('admin.contacts_users')}}</span> <span class="caret" ></span> </a>
                             <ul class="treeview-menu">
                                 <li onmouseover=" animationHover(this , 'pulse');"><a href="{{ route('contactsusers','new') }}" <?php echo ($page == 'users_new') ? "class='current'" : ""; ?> ><i class="fa fa-phone-square   fa-2x  iconsidebarltr"></i> <span> {{trans('admin.new')}}</span></a></li>
 
@@ -245,7 +245,7 @@
                         </li>
 
                         <li class="treeview"  onmouseover=" animationHover(this , 'pulse');">
-                            <a href="#"  <?php echo ($page == 'policy') ? "class='current'" : ""; ?> <?php echo ($page == 'terms') ? "class='current'" : ""; ?> <?php echo ($page == 'about') ? "class='current'" : ""; ?><?php echo ($page == 'contacts') ? "class='current'" : ""; ?>  ><i class="fa fa-th  fa-2x  iconsidebarltr"></i> <span> {{trans('admin.statics')}}</span> <span class="caret" style=" margin-right: 8.5rem;"></span> </a>
+                            <a href="#"  <?php echo ($page == 'policy') ? "class='current'" : ""; ?> <?php echo ($page == 'terms') ? "class='current'" : ""; ?> <?php echo ($page == 'about') ? "class='current'" : ""; ?><?php echo ($page == 'contacts') ? "class='current'" : ""; ?>  ><i class="fa fa-th  fa-2x  iconsidebarltr"></i> <span> {{trans('admin.statics')}}</span> <span class="caret" ></span> </a>
                              <ul class="treeview-menu">
                                  <li onmouseover=" animationHover(this , 'pulse');"><a href="{{ route('statics','about') }}" <?php echo ($page == 'about') ? "class='current'" : ""; ?> ><i class="fa fa-address-card  fa-2x  iconsidebarltr"></i> <span> {{trans('admin.about')}}</span></a></li>
  
@@ -260,7 +260,7 @@
                         <li  onnasebkseover=" animationHover(this , 'pulse');"><a href="{{ route('messages') }}" <?php echo ($page == 'messages') ? "class='current'" : ""; ?>><i class="fa fa-comment  fa-2x iconsidebarltr"  ></i> <span>{{trans('admin.messages')}}</span></a></li> 
                         
                         <li class="treeview"  onmouseover=" animationHover(this , 'pulse');">
-                            <a href="#"  <?php echo ($page == 'reports') ? "class='current'" : ""; ?> <?php echo ($page == 'reportsdeals') ? "class='current'" : ""; ?> <?php echo ($page == 'about') ? "class='current'" : ""; ?>  ><i class="fa fa-bars  fa-2x  iconsidebarltr"></i> <span> {{trans('admin.reports')}}</span> <span class="caret" style=" margin-right: 13rem;"></span> </a>
+                            <a href="#"  <?php echo ($page == 'reports') ? "class='current'" : ""; ?> <?php echo ($page == 'reportsdeals') ? "class='current'" : ""; ?> <?php echo ($page == 'about') ? "class='current'" : ""; ?>  ><i class="fa fa-bars  fa-2x  iconsidebarltr"></i> <span> {{trans('admin.reports')}}</span> <span class="caret"></span> </a>
                              <ul class="treeview-menu">
                                  <li onmouseover=" animationHover(this , 'pulse');"><a href="{{ route('charges') }}" <?php echo ($page == 'history_charges') ? "class='current'" : ""; ?> ><i class="fa fa-coins  fa-2x  iconsidebarltr"></i> <span> {{trans('admin.history_charges')}}</span></a></li>
                                  

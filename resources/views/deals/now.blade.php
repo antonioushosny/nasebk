@@ -610,6 +610,25 @@
                                                 
                                             </div>
                                         </div>
+                                        {{--  for  participants_no   --}}
+                                        <div class= "col-md-6 col-xs-12">
+                                            <div class="form-group  row" style="display:flex;">
+                                                <div class="col-xs-3">
+                                                    <span style="color: black "> *
+                                                        {!!Form::label('participants_no',trans('admin.participants_no')) !!}
+                                                    </span>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <span style="color: black "> 
+                                                        {!! Form::text('participants_no','',['class'=>'form-control','onkeypress'=>'isNumber(event); ','id' => 'participants_no_field','placeholder' => trans('admin.placeholder_participants_no')]) !!}
+                                                    </span>
+                                                    <span style="color: red " class="participants_no text-center hidden"></span>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row"  style="display:flex;">
                                         {{--  for image  --}}
                                         <div class= "col-md-6 col-xs-12">
                                             <div class="form-group  row" style="display:flex;">
@@ -1198,6 +1217,25 @@
                                                 
                                             </div>
                                         </div>
+                                        {{--  for  participants_no   --}}
+                                        <div class= "col-md-6 col-xs-12">
+                                            <div class="form-group  row" style="display:flex;">
+                                                <div class="col-xs-3">
+                                                    <span style="color: black "> *
+                                                        {!!Form::label('participants_no',trans('admin.participants_no')) !!}
+                                                    </span>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <span style="color: black "> 
+                                                        {!! Form::text('participants_no','',['class'=>'form-control','onkeypress'=>'isNumber(event); ','id' => 'participants_no_edit','placeholder' => trans('admin.placeholder_participants_no')]) !!}
+                                                    </span>
+                                                    <span style="color: red " class="participants_no1 text-center hidden"></span>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row"  style="display:flex;"> 
                                         {{--  for image  --}}
                                         <div class= "col-md-6 col-xs-12">
                                             <div class="form-group  row" style="display:flex;">
@@ -1422,6 +1460,7 @@
             $('#original_price_edit').val(data.original_price);
             $('#initial_price_edit').val(data.initial_price);
             $('#points_edit').val(data.points);
+            $('#participants_no_edit').val(data.participants_no);
             $('#tender_cost_edit').val(data.tender_cost);
             $('#tender_edit_cost_edit').val(data.tender_edit_cost);
             $('#tender_coupon_edit').val(data.tender_coupon);
@@ -1485,6 +1524,7 @@
             $('.expiry_time1').addClass('hidden');
             $('.image1').addClass('hidden');
             $('.status1').addClass('hidden');
+            $('.participants_no1').addClass('hidden');
             $('#editModal').modal('show');
         });
         
@@ -1519,6 +1559,7 @@
             $('.expiry_time').addClass('hidden');
             $('.image').addClass('hidden');
             $('.status').addClass('hidden');
+            $('.participants_no').addClass('hidden');
             $('#addModal').modal('show');
 
         });
@@ -1635,7 +1676,7 @@
                     $('.expiry_time').addClass('hidden');
                     $('.image').addClass('hidden');
                     $('.status').addClass('hidden');
-  
+                    $('.participants_no').addClass('hidden');
                   if ((data.errors)) {
                         {{--  $('#addModal').modal('show');  --}}
                         closeModal();
@@ -1723,7 +1764,10 @@
                             $('.expiry_time').removeClass('hidden');
                             $('.expiry_time').text(data.errors.expiry_time);
                         }          
-                      
+                        if (data.errors.participants_no) {
+                            $('.participants_no').removeClass('hidden');
+                            $('.participants_no').text(data.errors.participants_no);
+                        }
                   } else {
                    $('.add').disabled =false;
                    date = data.deal ;
@@ -1747,7 +1791,7 @@
                    
                     
                     toastr.success('{{trans('admin.successfully_added')}}', '{{trans('admin.Success_Alert')}}', {timeOut: 5000});
-                    $('#adminstable').prepend(`<tr class="item` + data.id + `"><td><input type="checkbox" name="ids[]" value="` + data.id + `"class="check icheck"></td><td>` + data.title_ar + `</td><td>` + data.original_price + `</td><td>` + data.initial_price + `</td><td>` + data.points + `</td><td>` + data.tickets + `</td><td>` + data.expiry_date + `</td><td><img src="`+ image +`" width="50px" height="50px"></td><td style="text-align:center"><span  class="badge">` + status + `</span></td><td>   <a href="#" class="edit-modal btn btn-success btn-round " title="`+title+`"  data-id=" `+ data.id + `" data-data=\'` + y +`\'><span class="glyphicon glyphicon-edit "></span> </a>  <a href="#" class="delete-modal btn btn-danger btn-round " data-id="` + data.id + `" ><span class="glyphicon glyphicon-trash " title="`+title2+`"></span> </a>  <a href="<?php echo url('/')?>/tickets/` + data.id+`" class=" profile-modal btn btn-warning btn-round" title="`+title3+`" data-data=\'` + y +`\' ><span class="glyphicon glyphicon-exclamation-sign"></span></a> </td></tr>`) ;
+                    $('#adminstable').prepend(`<tr class="item` + data.id + `"><td><input type="checkbox" name="ids[]" value="` + data.id + `"class="check icheck"></td><td>` + data.title_ar + `</td><td>` + data.original_price + `</td><td>` + data.initial_price + `</td><td>` + data.points + `</td><td>` + data.tickets + `</td><td>` + expiry_date + `</td><td><img src="`+ image +`" width="50px" height="50px"></td><td style="text-align:center"><span  class="badge">` + status + `</span></td><td>   <a href="#" class="edit-modal btn btn-success btn-round " title="`+title+`"  data-id=" `+ data.id + `" data-data=\'` + y +`\'><span class="glyphicon glyphicon-edit "></span> </a>  <a href="#" class="delete-modal btn btn-danger btn-round " data-id="` + data.id + `" ><span class="glyphicon glyphicon-trash " title="`+title2+`"></span>  </a>  <a href="<?php echo url('/')?>/tickets/` + data.id+`" class=" profile-modal btn btn-warning btn-round" title="`+title3+`" data-data=\'` + y +`\' ><span class="glyphicon glyphicon-exclamation-sign"></span></a> </td></tr>`) ;
                     $('#formadddeals')[0].reset();
                     $('#upload-file-success').html('');
                     
@@ -1816,7 +1860,7 @@
                     $('.expiry_time1').addClass('hidden');
                     $('.image1').addClass('hidden');
                     $('.status1').addClass('hidden');                 
-
+                    $('.participants_no1').addClass('hidden');
                     if ((data.errors)) {
                         closeModal();
                        toastr.error('{{trans('admin.Validation_error')}}', '{{trans('admin.Error_Alert')}}', {timeOut: 5000});
@@ -1904,6 +1948,10 @@
                             $('.expiry_time1').removeClass('hidden');
                             $('.expiry_time1').text(data.errors.expiry_time);
                         } 
+                        if (data.errors.participants_no) {
+                            $('.participants_no1').removeClass('hidden');
+                            $('.participants_no1').text(data.errors.participants_no);
+                        }
                         
                     } else {
                         {{-- console.log(data) ; --}}

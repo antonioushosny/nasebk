@@ -7,6 +7,12 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\User;
+use App\Ticket ;
+use App\Deal;
+use DateTime;
+use Carbon\Carbon;
+use App\Notifications\Notifications;
+use Notification;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -33,7 +39,7 @@ class Controller extends BaseController
                    
                     ), "priority" => "high",
                   "data"=>  array( "message"=>$message ,
-                                            "id"=>$id,
+                                            // "id"=>$id,
                                             "notification_type"=>$title,
                                             "is_background"=>false,
                                             "payload"=>array("my-data-item"=>"my-data-value"),
@@ -45,7 +51,7 @@ class Controller extends BaseController
         else{
              $fields = array("to" => $key,
             "data"=>  array( "message"=>$message ,
-                                "id"=>$id,
+                                // "id"=>$id,
                                 "notification_type"=>$title,
                                 "is_background"=>false,
                                 "payload"=>array("my-data-item"=>"my-data-value"),
@@ -127,6 +133,68 @@ class Controller extends BaseController
 
             //   dd($result) ;
     }
+
+    protected function CloseDeal(){
+        $deals = Deal::all();
+        foreach($deals as $deal){
+        $dt = Carbon::now();
+
+        $date  = date('Y-m-d', strtotime($dt));
+        $time  = date('H:i:s', strtotime($dt));
+        $later = new DateTime($deal->participants_date);
+        $earlier = new DateTime($date);
+        $diff = $later->diff($earlier)->format("%a");
+        // return $diff ;
+        if($diff >= 5){
+            $deal->is_open = '0' ;
+            $deal->save();
+        }
+        if($deal->expiry_date < $date || $deal->expiry_date == $date && $deal->expiry_time <= $time || $deal->is_open == '0'){
+            $ticketss = Ticket::where('deal_id',$deal->id)->get();
+                if(sizeof($ticketss) > 0){
+                    $deal->is_open = '0' ;
+                    $deal->save();
+                    foreach($ticketss as $ticket){
+                        $ticket->status = '0';
+                        $ticket->save();
+                    }
+                    $ticket = Ticket::where('deal_id',$deal->id)->orderBy('points','desc')->first();
+                    if($ticket){
+                        $ticket->status = '1';
+                        $ticket->save();
+                        if($deal->notify == '0'){
+                            $user =User::find($ticket->user_id ) ;
+                            
+                            $title = 'Congratulations' ;
+                            $msg = 'مبروك لقد فزت بصفقة ال'  . $deal->title_ar ;
+                            $type = 'deal' ;
+                            if($user->device_token){
+                                $this->notification($user->device_token,$title,$msg,$deal->id);
+                            }
+                            $user->notify(new Notifications($msg,$user,$type ));
+                            $admins = User::where('role','admin')->orderBy('id', 'DESC')->get();
+                            
+                            $msg = 'لقد فاز '.$user->name.'بصفقة '  . $deal->title_ar ;
+                            foreach($admins as $admin){
+                                $admin->notify(new Notifications($msg,$admin,$type ));
+                                $device_token = $admin->device_token;
+                                if($device_token){
+                                    $this->webnotification($device_token,$title,$msg,$type);
+                                }
+                            }
+                            $deal->notify = '1' ;
+                            $deal->save();
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+        }
+    }
+        
+
     // end send notification 
     public function AllSeen(){
         foreach(auth()->user()->unreadNotifications as $note){

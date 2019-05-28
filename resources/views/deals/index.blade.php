@@ -611,6 +611,27 @@
                                                 
                                             </div>
                                         </div>
+                                        {{--  for  participants_no   --}}
+                                        <div class= "col-md-6 col-xs-12">
+                                            <div class="form-group  row" style="display:flex;">
+                                                <div class="col-xs-3">
+                                                    <span style="color: black "> *
+                                                        {!!Form::label('participants_no',trans('admin.participants_no')) !!}
+                                                    </span>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <span style="color: black "> 
+                                                        {!! Form::text('participants_no','',['class'=>'form-control','onkeypress'=>'isNumber(event); ','id' => 'participants_no_field','placeholder' => trans('admin.placeholder_participants_no')]) !!}
+                                                    </span>
+                                                    <span style="color: red " class="participants_no text-center hidden"></span>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row"  style="display:flex;">
+
+                                           
                                         {{--  for image  --}}
                                         <div class= "col-md-6 col-xs-12">
                                             <div class="form-group  row" style="display:flex;">
@@ -1199,6 +1220,25 @@
                                                 
                                             </div>
                                         </div>
+                                        {{--  for  participants_no   --}}
+                                        <div class= "col-md-6 col-xs-12">
+                                            <div class="form-group  row" style="display:flex;">
+                                                <div class="col-xs-3">
+                                                    <span style="color: black "> *
+                                                        {!!Form::label('participants_no',trans('admin.participants_no')) !!}
+                                                    </span>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <span style="color: black "> 
+                                                        {!! Form::text('participants_no','',['class'=>'form-control','onkeypress'=>'isNumber(event); ','id' => 'participants_no_edit','placeholder' => trans('admin.placeholder_participants_no')]) !!}
+                                                    </span>
+                                                    <span style="color: red " class="participants_no1 text-center hidden"></span>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row"  style="display:flex;"> 
                                         {{--  for image  --}}
                                         <div class= "col-md-6 col-xs-12">
                                             <div class="form-group  row" style="display:flex;">
@@ -1424,6 +1464,7 @@
             $('#original_price_edit').val(data.original_price);
             $('#initial_price_edit').val(data.initial_price);
             $('#points_edit').val(data.points);
+            $('#participants_no_edit').val(data.participants_no);
             $('#tender_cost_edit').val(data.tender_cost);
             $('#tender_edit_cost_edit').val(data.tender_edit_cost);
             $('#tender_coupon_edit').val(data.tender_coupon);
@@ -1487,6 +1528,7 @@
             $('.expiry_time1').addClass('hidden');
             $('.image1').addClass('hidden');
             $('.status1').addClass('hidden');
+            $('.participants_no1').addClass('hidden');
             $('#editModal').modal('show');
         });
         
@@ -1521,6 +1563,7 @@
             $('.expiry_time').addClass('hidden');
             $('.image').addClass('hidden');
             $('.status').addClass('hidden');
+            $('.participants_no').addClass('hidden');
             $('#addModal').modal('show');
 
         });
@@ -1637,7 +1680,8 @@
                     $('.expiry_time').addClass('hidden');
                     $('.image').addClass('hidden');
                     $('.status').addClass('hidden');
-  
+                    $('.participants_no').addClass('hidden');
+
                   if ((data.errors)) {
                         {{--  $('#addModal').modal('show');  --}}
                         closeModal();
@@ -1720,6 +1764,10 @@
                         if (data.errors.expiry_date) {
                             $('.expiry_date').removeClass('hidden');
                             $('.expiry_date').text(data.errors.expiry_date);
+                        }
+                        if (data.errors.participants_no) {
+                            $('.participants_no').removeClass('hidden');
+                            $('.participants_no').text(data.errors.participants_no);
                         }
                         if (data.errors.expiry_time) {
                             $('.expiry_time').removeClass('hidden');
@@ -1818,6 +1866,7 @@
                     $('.expiry_time1').addClass('hidden');
                     $('.image1').addClass('hidden');
                     $('.status1').addClass('hidden');                 
+                    $('.participants_no1').addClass('hidden');
 
                     if ((data.errors)) {
                         closeModal();
@@ -1901,12 +1950,14 @@
                             $('.expiry_date1').removeClass('hidden');
                             $('.expiry_date1').text(data.errors.expiry_date);
                         }          
-                      
                         if (data.errors.expiry_time) {
                             $('.expiry_time1').removeClass('hidden');
                             $('.expiry_time1').text(data.errors.expiry_time);
                         } 
-                        
+                        if (data.errors.participants_no) {
+                            $('.participants_no1').removeClass('hidden');
+                            $('.participants_no1').text(data.errors.participants_no);
+                        }
                     } else {
                         {{-- console.log(data) ; --}}
                         expiry_date = data.expiry_date ;

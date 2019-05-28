@@ -100,7 +100,7 @@ class CountriesController extends Controller
         // return $id ;
         if ($request->ajax()) {
             return response()->json([
-                'cities' => City::where('country_id', $id)->get()
+                'cities' => City::where('country_id', $id)->orWhere('country_id','1')->get()
             ]);
         }
     }

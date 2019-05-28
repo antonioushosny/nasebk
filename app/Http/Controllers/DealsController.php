@@ -23,7 +23,7 @@ class DealsController extends Controller
      */
     public function __construct()
     {
-      
+        date_default_timezone_set('Africa/Cairo');
     }
     public function index()
     {
@@ -59,7 +59,7 @@ class DealsController extends Controller
         $dt = Carbon::now();
         $date  = date('Y-m-d', strtotime($dt));
         $time  = date('H:i:s', strtotime($dt));
-        //  return $time ;
+        //  return $date ;
         $title = 'nowdeals';
         $allcategories = Category::all();
         $categories = array_pluck($allcategories,'name_ar', 'id');
@@ -165,7 +165,7 @@ class DealsController extends Controller
                 'subcategory_id'  =>'required',           
                 'country_id'  =>'required',   
                 'city_id'  =>'required',                   
-                // 'expiry_date'  =>'required',     
+                'participants_no'  =>'required',     
                 // 'expiry_time'  =>'required',     
                 'status'  =>'required'   ,   
                 // 'image'  =>'required'   , 
@@ -192,7 +192,7 @@ class DealsController extends Controller
                 'subcategory_id'  =>'required',           
                 'country_id'  =>'required',           
                 'city_id'  =>'required',           
-                // 'expiry_date'  =>'required',     
+                'participants_no'  =>'required',      
                 // 'expiry_time'  =>'required',     
                 'status'  =>'required'   ,   
                 'image'  =>'required'   ,   
@@ -221,25 +221,26 @@ class DealsController extends Controller
 
          }
 
-         $deal->title_ar          = $request->title_ar ;
-         $deal->title_en         = $request->title_en ;
-         $deal->original_price         = $request->original_price ;
-         $deal->initial_price         = $request->initial_price ;
-         $deal->points         = $request->points ;
+         $deal->title_ar            = $request->title_ar ;
+         $deal->title_en            = $request->title_en ;
+         $deal->original_price      = $request->original_price ;
+         $deal->initial_price       = $request->initial_price ;
+         $deal->points              = $request->points ;
+         $deal->participants_no     = $request->participants_no ;
          $deal->tender_cost         = $request->tender_cost ;
-         $deal->tender_edit_cost         = $request->tender_edit_cost ;
-         $deal->tender_coupon         = $request->tender_coupon ;
-         $deal->disc_ar         = $request->disc_ar ;
-         $deal->disc_en         = $request->disc_en ;
-         $deal->info_ar         = $request->info_ar ;
-         $deal->info_en         = $request->info_en ;
+         $deal->tender_edit_cost    = $request->tender_edit_cost ;
+         $deal->tender_coupon       = $request->tender_coupon ;
+         $deal->disc_ar             = $request->disc_ar ;
+         $deal->disc_en             = $request->disc_en ;
+         $deal->info_ar             = $request->info_ar ;
+         $deal->info_en             = $request->info_en ;
          $deal->category_id         = $request->category_id ;
-         $deal->sub_id         = $request->subcategory_id ;
+         $deal->sub_id              = $request->subcategory_id ;
          $deal->expiry_date         = $request->expiry_date ;
          $deal->expiry_time         = $request->expiry_time ;
-         $deal->country_id         = $request->country_id ;
-         $deal->city_id         = $request->city_id ;
-         $deal->status        = $request->status ;
+         $deal->country_id          = $request->country_id ;
+         $deal->city_id             = $request->city_id ;
+         $deal->status              = $request->status ;
          $deal->save();
 
        if ($request->hasFile('image')) {

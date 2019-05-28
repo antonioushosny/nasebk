@@ -116,12 +116,6 @@ return [
         'disc'                          =>'الوصف ',
         'disc_en'                       =>'الوصف بالانجليزية',
         'date'                          => 'التاريخ',
-        'stage'                         => 'المرحلة' ,
-        'level'                         => 'المستوى' ,
-        'classe'                        => 'الفصل',
-        'client'                        => 'البائع',
-        'section'                       => 'مجموعة',
-        'number'                        => 'رقم الحصة',
         'user_id'                       => ' المستخدم',
         'national_id'                   => ' الرقم القومي   ',
         'images'                        => 'الصور',
@@ -164,10 +158,11 @@ return [
         'placeholder_title'             => ' ادخل العنوان ',
         'placeholder_message'           => ' ادخل الرسالة ',
         'placeholder_cost'              => ' ادخل التكلفة  ',
-        'placeholder_coupons'              => ' ادخل عدد القسائم  ',
+        'placeholder_coupons'              => ' ادخل عدد النقاط المكتسبة  ',
         'placeholder_price'              => ' ادخل السعر  ',
         'placeholder_sale'              => ' ادخل سعر المنتج بعد التخفيض ',
         'placeholder_national_id'       => ' ادخل الرقم القومي   ',
+        'placeholder_participants_no'       => ' ادخل الحد الاعلي للمشتركين    ',
     //end placeholders
 
     //admin page
@@ -182,19 +177,19 @@ return [
     //end admin page  
 
     //deals  page  
-                   
+        'participants_no'  => 'عدد المشتركين',
         'original_price'  =>'السعر الاصلي',           
         'placeholder_original_price'  =>'ادخل السعر الاصلي ',           
         'initial_price'  =>'السعر الابتدائي',           
         'placeholder_initial_price'  =>'ادخل السعر الابتدائي',           
-        'points'  =>'عدد النقاط',           
-        'placeholder_points'  =>'ادخل عدد النقاط ',           
+        'points'  =>'عدد التذاكر',           
+        'placeholder_points'  =>'ادخل عدد التذاكر ',           
         'tender_cost'  =>'تكلفة الاشتراك',           
-        'placeholder_tender_cost'  =>'ادخل نقاط تكلفة الاشتراك في الصفقة ',           
+        'placeholder_tender_cost'  =>'ادخل تذاكر تكلفة الاشتراك في الصفقة ',           
         'tender_edit_cost'  =>'تكلفة التعديل ',           
-        'placeholder_tender_edit_cost'  =>'ادخل نقاط تكلفة التعديل ',           
-        'tender_coupon'  =>'القسائم المجانية',           
-        'placeholder_tender_coupon'  =>'ادخل القسائم المجانية',           
+        'placeholder_tender_edit_cost'  =>'ادخل تذاكر تكلفة التعديل ',           
+        'tender_coupon'  =>'النقاط المكتسبة',           
+        'placeholder_tender_coupon'  =>'ادخل النقاط المكتسبة',           
         'disc_ar'  =>'الوصف بالعربية',           
         'info_ar'  =>'المعلومات بالعربي',           
         'placeholder_info_ar'  =>'ادخل المعلومات بالعربي',           
@@ -206,7 +201,7 @@ return [
         'city_id'  =>'المدينة',           
         'expiry_date'  =>'تاريخ الانتهاء',     
         'placeholder_expiry_date'  =>'ادخل تاريخ الانتهاء',     
-        'tickets' => 'التذاكر',
+        'tickets' => 'الاشتراكات',
         'deals' => 'الصفقات القادمة',
         'nowdeals' => 'الصفقات الحالية ',
         'nowdealsm' => 'الصفقات الحالية ',
@@ -277,7 +272,7 @@ return [
         'created_at'          => 'التاريخ ',
         'charge'          => 'الشحن ',
         'charges'          => 'الشحنات ',
-        'send_points'          => 'اضافة نقاط / قسائم ',
+        'send_points'          => 'اضافة تذاكر / نقاط  ',
         'expiry_time'           => 'وقت الانتهاء',
         'for_country'           => 'لدول معينة',
         'for_city'              => 'لمدن معينة',
@@ -309,8 +304,8 @@ return [
         'edit_package'                   => ' تعديل باقة'  ,
         'delete_package'                 =>  ' حذف باقة',
         'cost'                              => 'التكلفة',
-        'coupons'                       => 'القسائم',
-        'coupon'                       => 'قسيمة',
+        'coupons'                       => 'النقاط المكتسبة',
+        'coupon'                       => 'نقطة',
     //end packages page
 
      //countries page 
